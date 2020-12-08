@@ -2,7 +2,7 @@
 
 CGNTV 카메라 장비 관리대장 프로그램입니다.
 
-<br><br><br>
+<br><br>
 # 개발 환경
 
 - Java 1.8
@@ -16,7 +16,6 @@ CGNTV 카메라 장비 관리대장 프로그램입니다.
 <br><br>
 
 # DB 세팅
-<br>
 
 ## Database 생성
 - create database cer;
