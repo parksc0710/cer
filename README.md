@@ -29,14 +29,15 @@ CGNTV 카메라 장비 관리대장 프로그램입니다.
 
 ## 테이블 생성 
 - 유저 테이블<br>
-CREATE TABLE 'usr' (<br>
-  'usr_id' int(11) NOT NULL AUTO_INCREMENT,<br>
-  'usr_email' varchar(100) NOT NULL,<br>
-  'usr_pw' varchar(45) DEFAULT NULL,<br>
-  'usr_grant' varchar(45) DEFAULT NULL,<br>
-  'crt_dae' datetime DEFAULT CURRENT_TIMESTAMP,<br>
-  'upt_dat' datetime DEFAULT CURRENT_TIMESTAMP,<br>
-  'act_flg' bit(1) DEFAULT b'1',<br>
-  'del_flg' bit(1) DEFAULT b'0',<br>
-  PRIMARY KEY ('usr_id')<br>
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='회원 테이블';<br><br>
+CREATE TABLE 'member' (
+  'member_id' int(11) NOT NULL AUTO_INCREMENT,
+  'member_email' varchar(100) NOT NULL,
+  'member_pw' varchar(45) DEFAULT NULL,
+  'member_name' varchar(45) DEFAULT NULL,
+  'member_grant' varchar(45) DEFAULT NULL,
+  'create_date' datetime DEFAULT CURRENT_TIMESTAMP,
+  'update_date' datetime DEFAULT CURRENT_TIMESTAMP,
+  'act_flg' bit(1) DEFAULT b'1',
+  'del_flg' bit(1) DEFAULT b'0',
+  PRIMARY KEY ('member_id')
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='회원 테이블';
