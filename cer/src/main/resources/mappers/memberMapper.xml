@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.cgntv.cer.MemberMapper">
+  	
+  	<select id="getTime" resultType="string">
+  		select now();
+  	</select>
+  	
+  	<insert id="insertMember">
+  		INSERT INTO member
+			(user_id, user_pw, user_email, act_flg, del_flg)
+		VALUES
+			(#{user_id}, #{user_pw}, #{user_email}, 1, 0);
+  	</insert>
+  
+  	<!-- 일반 USER 권한 맴버 등록 -->
+  	<insert id="insertGrantUser">
+		INSERT INTO member_member_grant
+			(member_id, grant_id)
+		VALUES
+		    ((SELECT member_id FROM member WHERE user_id = #{user_id}), 2)
+  	</insert>
+  	
+  	<!-- 소셜회원가입 USER 권한 맴버 등록 -->
+  	<insert id="insertGrantOauth2">
+		INSERT INTO member_member_grant
+			(member_id, grant_id)
+		VALUES
+		    ((SELECT member_id FROM member WHERE user_id = #{user_id}), 3)
+  	</insert>
+  	
+  	<select id="selectMember" resultType="com.cgntv.cer.domain.MemberVO">
+  		select a.member_id, a.user_id, a.user_pw, a.user_email, a.act_flg, a.del_flg, c.grant_name from member a
+		inner join member_member_grant b
+		on a.member_id = b.member_id
+		inner join member_grant c
+		on b.grant_id = c.grant_id
+		where a.member_id = #{member_id}
+  	</select>
+  	
+  	<!-- user_id로 member_id 불러오기 -->
+  	<select id="selectMemberID" resultType="com.cgntv.cer.domain.MemberVO">
+  		SELECT member_id FROM member WHERE user_id = #{user_id}
+  	</select>
+  	
+  	<!-- user_email로 member_id 불러오기 -->
+  	<select id="selectMemberEmail" resultType="com.cgntv.cer.domain.MemberVO">
+  		SELECT member_id FROM member WHERE user_email = #{user_email}
+  	</select>
+  	
+  	<select id="selectMemberWithPw" resultType="com.cgntv.cer.domain.MemberVO">
+  		SELECT * FROM member WHERE user_id = #{user_id} and user_pw = #{user_pw}
+  	</select>
+  	
+  </mapper>
+ 
+ 

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+ 
+<decorators defaultdir="/WEB-INF/views/decorator">
+ 
+    <excludes>
+      <pattern>/member/register*</pattern>
+      <pattern>/login*</pattern>
+      <pattern>/socialLogin/*</pattern>
+      <pattern>/social*</pattern>
+      <pattern>/kakaoLogin*</pattern>
+      <pattern>/googleLogin*</pattern>
+      <pattern>/facebookLogin*</pattern>
+    </excludes>    
+    
+    <decorator name="main" page="main/default.jsp">
+       <pattern>/*</pattern>  
+    </decorator>  
+    
+</decorators>
+
+

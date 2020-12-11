@@ -1,0 +1,171 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
+<!DOCTYPE html>
+      <header class="header-block line-top">
+      
+        <!-- Main Header
+        ............................................ -->
+        <div class="main-header container">
+        
+          <!-- Header Cols -->
+          <div class="header-cols"> 
+          
+            <!-- Brand Col -->
+            <div class="brand-col hidden-xs">
+            
+              <!-- vcenter -->
+              <div class="vcenter">
+                <!-- v-centered -->               
+                <div class="vcenter-this">
+                  <a href="/">
+                    <img src="${pageContext.request.contextPath}/resources/assets/images/logo.png" alt="HELENA">
+                  </a>
+                </div>
+                <!-- v-centered -->
+              </div>
+              <!-- vcenter -->
+
+            </div>
+            <!-- /Brand Col -->
+            
+            <!-- Left Col -->
+            <div class="left-col">
+            
+              <!-- vcenter -->
+              <div class="vcenter">
+              
+              </div>
+              <!-- /vcenter -->
+              
+            </div>
+            <!-- /Left Col -->
+            
+
+          </div>
+          <!-- Header Cols -->
+        
+        </div>
+        <!-- /Main Header
+        .............................................. -->
+        
+        <!-- Nav Bottom
+        .............................................. -->
+        <nav class="nav-bottom hnav hnav-ruled white-bg boxed-section">
+        
+          <!-- Container -->
+          <div class="container">
+          
+            <!-- Header-->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle no-border" data-toggle="collapse" data-target="#nav-collapse2">
+                <span class="sr-only">Toggle navigation</span>
+                <i class="fa fa-navicon"></i>
+              </button>
+              <a class="navbar-brand visible-xs" href="#"><img src="${pageContext.request.contextPath}/resources/assets/images/logo-xs.png" alt="H"></a>
+            </div>
+            <!-- /Header-->
+          
+            <!-- Collapse -->
+            <div id="nav-collapse2" class="collapse navbar-collapse navbar-absolute">
+            
+              <!-- Navbar Center -->
+              <ul class="nav navbar-nav navbar-center line-top case-c">
+                <li class="active"><a href="/">home</a></li>
+                <li><a href="/">Board</a></li>
+                <li><a href="/">About Me</a></li>
+              </ul>
+              <!-- /Navbar Center -->
+              
+            </div>
+            <!-- /Collapse -->
+            
+            <!-- Dont Collapse -->
+            <div class="navbar-dont-collapse">
+
+			<security:authorize ifAnyGranted="ROLE_ADMIN">	
+			 <!-- Navbar btn-group -->
+              <div class="navbar-btn-group btn-group navbar-right no-margin-r-xs">
+				
+				<!-- Btn Wrapper -->
+                <div class="btn-wrapper dropdown">
+					<a class="btn btn-outline" style="text-transform: none;">[ <security:authentication property="principal.user_id" var="loginID"/>${loginID } ]님 어서오세요.</a>
+				</div>
+				<!-- /Btn Wrapper -->
+				
+				<!-- Btn Wrapper -->
+                <div class="btn-wrapper dropdown">
+                
+                  <a class="btn btn-outline"> 관리자페이지</a>
+                  
+                </div>
+                <!-- /Btn Wrapper -->
+                
+				<!-- Btn Wrapper -->
+                <div class="btn-wrapper dropdown">
+                
+                  <a class="btn btn-outline" href="/logout"><i class="ti ti-user"></i> Logout</a>
+                  
+                </div>
+                <!-- /Btn Wrapper -->
+                
+               </div>
+               <!-- /Navbar btn-group -->
+			</security:authorize>
+			<security:authorize ifAnyGranted="ROLE_USER">	
+			 <!-- Navbar btn-group -->
+              <div class="navbar-btn-group btn-group navbar-right no-margin-r-xs">
+              
+              	<!-- Btn Wrapper -->
+                <div class="btn-wrapper dropdown">
+					<a class="btn btn-outline" style="text-transform: none;">[ <security:authentication property="principal.user_id" var="loginID"/>${loginID } ]님 어서오세요.</a>
+				</div>
+				<!-- /Btn Wrapper -->
+				
+				<!-- Btn Wrapper -->
+                <div class="btn-wrapper dropdown">
+                
+                  <a class="btn btn-outline" href="/logout"><i class="ti ti-user"></i> Logout</a>
+                  
+                </div>
+                <!-- /Btn Wrapper -->
+                
+              </div>
+              <!-- /Navbar btn-group -->
+			</security:authorize>
+			<security:authorize ifNotGranted="ROLE_ADMIN, ROLE_USER">
+              <!-- Navbar btn-group -->
+              <div class="navbar-btn-group btn-group navbar-right no-margin-r-xs">
+              
+                <!-- Btn Wrapper -->
+                <div class="btn-wrapper dropdown">
+                
+                  <a class="btn btn-outline" href="/login.do"><i class="ti ti-user"></i> Login</a>
+                  
+                </div>
+                <!-- /Btn Wrapper -->
+
+                <!-- Btn Wrapper -->
+                <div class="btn-wrapper dropdown">
+                
+                  <a class="btn btn-outline" href="/member/register.do"><i class="ti ti-pencil-alt"></i> Join</a>
+                  
+                </div>
+                <!-- /Btn Wrapper -->
+
+              </div>
+              <!-- /Navbar btn-group -->
+        	</security:authorize>
+        	
+            </div>
+            <!-- /Dont Collapse -->
+
+          </div>
+          <!-- /Container -->
+          
+        </nav>
+        <!-- /Nav Bottom
+        .............................................. -->
+        
+      </header>
