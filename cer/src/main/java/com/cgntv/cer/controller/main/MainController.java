@@ -22,18 +22,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.cgntv.cer.domain.MemberVO;
 import com.cgntv.cer.service.MemberService;
 import com.cgntv.cer.utils.GetOAuthResource;
+import com.cgntv.cer.utils.OAuthKeys;
 import com.fasterxml.jackson.databind.JsonNode;
 
 @Controller
 public class MainController {
 
 	// 카카오 로그인 REST API 키
-	private String KAKAO_CLIENT_ID = "####";
+	private String KAKAO_CLIENT_ID = OAuthKeys.KAKAO_CLIENT_ID;
 	
-	private String KAKAO_CLIENT_SECRET = "";
+	private String KAKAO_CLIENT_SECRET = OAuthKeys.KAKAO_CLIENT_SECRET;
 
 	// 카카오 로그인 리다이렉트 URI
-	private String KAKAO_REDIRECT_URI = "####";
+	private String KAKAO_REDIRECT_URI = OAuthKeys.KAKAO_REDIRECT_URI;
 	
 	// 카카오 로그인 인증 서버 URL
 	private String KAKAO_AUTH_URL = "https://kauth.kakao.com/oauth/token";
@@ -43,12 +44,12 @@ public class MainController {
 	
 	
 	// 구글 로그인 REST API 키
-	private String GOOGLE_CLIENT_ID = "####";
+	private String GOOGLE_CLIENT_ID = OAuthKeys.GOOGLE_CLIENT_ID;
 	
-	private String GOOGLE_CLIENT_SECRET = "####";
+	private String GOOGLE_CLIENT_SECRET = OAuthKeys.GOOGLE_CLIENT_SECRET;
 	
 	// 구글 로그인 리다이렉트 URI
-	private String GOOGLE_REDIRECT_URI = "####";
+	private String GOOGLE_REDIRECT_URI = OAuthKeys.GOOGLE_REDIRECT_URI;
 		
 	// 구글 로그인 인증 서버 URL
 	private String GOOGLE_AUTH_URL = "https://www.googleapis.com/oauth2/v4/token";
@@ -58,12 +59,12 @@ public class MainController {
 	
 	
 	// 페이스북 로그인 REST API 키
-	private String FACEBOOK_CLIENT_ID = "####";
+	private String FACEBOOK_CLIENT_ID = OAuthKeys.FACEBOOK_CLIENT_ID;
 
-	private String FACEBOOK_CLIENT_SECRET = "####";
+	private String FACEBOOK_CLIENT_SECRET = OAuthKeys.FACEBOOK_CLIENT_SECRET;
 		
 	// 페이스북 로그인 리다이렉트 URI
-	private String FACEBOOK_REDIRECT_URI = "####";
+	private String FACEBOOK_REDIRECT_URI = OAuthKeys.FACEBOOK_REDIRECT_URI;
 	
 	// 페이스북 로그인 인증 서버 URL
 	private String FACEBOOK_AUTH_URL = "https://graph.facebook.com/v3.2/oauth/access_token?";
